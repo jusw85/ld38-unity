@@ -75,7 +75,7 @@ public class GameManager : MonoBehaviour {
         if (c.isMenuPressed && !isGameOver) {
             ToggleMenu();
         }
-        if (!isPaused) {
+        if (!isPaused && pc != null) {
             pc.DoUpdate(c);
         }
     }
