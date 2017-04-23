@@ -20,7 +20,9 @@ public class EnemyController : PoolObject, IDamageable {
 
 
     private BoxCollider2D hitbox;
-
+    private BoxCollider2D movement;
+    private Rigidbody2D rb2d;
+    private GameObject floatingText;
 
     private Enemy enemy;
     private EnemyAnimator enemyAnimator;
@@ -32,6 +34,9 @@ public class EnemyController : PoolObject, IDamageable {
         moverController = GetComponent<MoverController>();
 
         hitbox = transform.Find("Hitbox").GetComponent<BoxCollider2D>();
+        movement = transform.Find("Movement").GetComponent<BoxCollider2D>();
+        floatingText = transform.Find("FloatingText").gameObject;
+        rb2d = GetComponent<Rigidbody2D>();
 
         poolManager = Toolbox.GetOrAddComponent<PoolManager>();
         poolManager.CreatePool(bloodSplatter, 150);
@@ -117,7 +122,15 @@ public class EnemyController : PoolObject, IDamageable {
         }
         if (enemy.currentHp <= 0) {
             fsm.SetTrigger("triggerDeath");
+            if (faceDir.x == -1) {
+                spriteRenderer.flipX = true;
+            }
+
             isDying = true;
+            movement.gameObject.SetActive(false);
+            hitbox.gameObject.SetActive(false);
+            floatingText.SetActive(false);
+            rb2d.isKinematic = true;
             StartCoroutine(DeathWait());
             return;
         }
