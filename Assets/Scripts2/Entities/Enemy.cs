@@ -68,47 +68,47 @@ public class Enemy : MonoBehaviour {
     }
 
     private EnemyFrameInfo frameInfo;
-    public void DoUpdate(FsmFrameInfo state, ControlManager c, ref EnemyFrameInfo frameInfo) {
+    public void DoUpdate(FsmFrameInfo state, ref EnemyFrameInfo frameInfo) {
         this.frameInfo = frameInfo;
         if (frameInfo.damageInfo != null) {
             Damage(frameInfo.damageInfo);
         }
 
-        if (state.hasChanged) {
-            if (state.curr == AnimStates.ATTACK1) {
-                frameInfo.isAttacking = true;
-                if (c.isMoved) {
-                    Face(c.move);
-                }
-            } else if (state.curr == AnimStates.ATTACK2) {
-                frameInfo.isAttacking = true;
-                if (c.isMoved) {
-                    Face(c.move);
-                }
-            } else if (state.curr == AnimStates.ATTACK3) {
-                frameInfo.isAttacking = true;
-                if (c.isMoved) {
-                    Face(c.move);
-                }
-            } else if (state.curr == AnimStates.CHARGEATTACK) {
-                frameInfo.isChargeAttacking = true;
-                if (c.isMoved) {
-                    Face(c.move);
-                }
-            }
-        }
+        //if (state.hasChanged) {
+        //    if (state.curr == AnimStates.ATTACK1) {
+        //        frameInfo.isAttacking = true;
+        //        if (c.isMoved) {
+        //            Face(c.move);
+        //        }
+        //    } else if (state.curr == AnimStates.ATTACK2) {
+        //        frameInfo.isAttacking = true;
+        //        if (c.isMoved) {
+        //            Face(c.move);
+        //        }
+        //    } else if (state.curr == AnimStates.ATTACK3) {
+        //        frameInfo.isAttacking = true;
+        //        if (c.isMoved) {
+        //            Face(c.move);
+        //        }
+        //    } else if (state.curr == AnimStates.CHARGEATTACK) {
+        //        frameInfo.isChargeAttacking = true;
+        //        if (c.isMoved) {
+        //            Face(c.move);
+        //        }
+        //    }
+        //}
 
-        if (state.curr == AnimStates.IDLE) {
-            if (c.isMoved) {
-                Walk(c.move);
-            }
+        //if (state.curr == AnimStates.IDLE) {
+        //    if (c.isMoved) {
+        //        Walk(c.move);
+        //    }
 
-        } else if (state.curr == AnimStates.WALK) {
-            if (c.isMoved) {
-                Walk(c.move);
-            }
+        //} else if (state.curr == AnimStates.WALK) {
+        //    if (c.isMoved) {
+        //        Walk(c.move);
+        //    }
 
-        }
+        //}
     }
 
 }

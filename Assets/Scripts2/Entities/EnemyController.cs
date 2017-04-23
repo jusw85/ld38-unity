@@ -27,7 +27,7 @@ public class EnemyController : PoolObject, IDamageable {
     private EnemyAudio enemyAudio;
 
     private EnemyFrameInfo frameInfo;
-
+    private SpriteRenderer spriteRenderer;
     private void Awake() {
         moverController = GetComponent<MoverController>();
 
@@ -46,6 +46,7 @@ public class EnemyController : PoolObject, IDamageable {
         enemyAudio = GetComponent<EnemyAudio>();
 
         frameInfo = new EnemyFrameInfo();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void Start() {
@@ -91,14 +92,35 @@ public class EnemyController : PoolObject, IDamageable {
     public float proximityStop = 30f;
 
     //public void DoUpdate() 
-        // decide what to do based on state and vars
-        // update fsm state
-        // 
+    // decide what to do based on state and vars
+    // update fsm state
+    // 
     //}
+
+    public static int ATTACKING = Animator.StringToHash("Base.Attack");
+    private bool isDying = false;
+
+    private IEnumerator DeathWait() {
+        yield return new WaitForSeconds(3f);
+        DOTween
+            .To(() => spriteRenderer.color, x => spriteRenderer.color = x, Color.clear, 1.5f)
+            .OnComplete(Destroy)
+            .Play();
+    }
+
     private void Update() {
         //if (stopFrames-- > 0) {
         //    moverController.MoveSpeed = 0;
         //}
+        if (isDying) {
+            return;
+        }
+        if (enemy.currentHp <= 0) {
+            fsm.SetTrigger("triggerDeath");
+            isDying = true;
+            StartCoroutine(DeathWait());
+            return;
+        }
 
         if (trackTarget && stopFrames-- <= 0) {
             moverController.Speed = moveSpeed;
@@ -111,6 +133,10 @@ public class EnemyController : PoolObject, IDamageable {
                     //Face(moverController.MoveDirection);
                     //moverController.MoveDirection = Vector2.zero;
                     moverController.Direction = followVector;
+
+                    if (fsm.GetCurrentAnimatorStateInfo(0).fullPathHash != ATTACKING) {
+                        fsm.SetTrigger("triggerAttack");
+                    }
                 } else {
                     moverController.Direction = followVector;
                 }
@@ -131,26 +157,27 @@ public class EnemyController : PoolObject, IDamageable {
         fsm.SetFloat(AnimParams.FACEDIRX, faceDir.x);
         fsm.SetFloat(AnimParams.FACEDIRY, faceDir.y);
 
-        //enemy.DoUpdate(state, c, ref frameInfo);
+        FsmFrameInfo state = null;
+        enemy.DoUpdate(state, ref frameInfo);
         enemyAnimator.DoUpdate(enemy, ref frameInfo);
         enemyAudio.DoUpdate(enemy, ref frameInfo);
 
         frameInfo.Reset();
     }
 
-    private void OnCollisionEnter2D(Collision2D other) {
-        string tag = other.gameObject.tag;
-        if (tag == "Player") {
-            MoverController movable = other.gameObject.GetComponent<MoverController>();
-            if (movable != null) {
-                movable.ExternalForce = moverController.Direction * pushbackForce;
-            }
-            IDamageable damageable = (IDamageable)other.gameObject.GetComponent(typeof(IDamageable));
-            if (damageable != null) {
-                damageable.Damage(damageInfo);
-            }
-        }
-    }
+    //private void OnCollisionEnter2D(Collision2D other) {
+    //    string tag = other.gameObject.tag;
+    //    if (tag == "Player") {
+    //        MoverController movable = other.gameObject.GetComponent<MoverController>();
+    //        if (movable != null) {
+    //            movable.ExternalForce = moverController.Direction * pushbackForce;
+    //        }
+    //        IDamageable damageable = (IDamageable)other.gameObject.GetComponent(typeof(IDamageable));
+    //        if (damageable != null) {
+    //            damageable.Damage(damageInfo);
+    //        }
+    //    }
+    //}
 
     private DamageInfo damageInfo;
 
