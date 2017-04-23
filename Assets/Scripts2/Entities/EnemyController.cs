@@ -11,6 +11,8 @@ public class EnemyController : PoolObject, IDamageable {
 
     public float pushbackForce = 40f;
     public GameObject followTarget;
+    [System.NonSerialized]
+    public EnemyController followTargetController;
 
     private MoverController moverController;
     private Animator fsm;
@@ -55,9 +57,9 @@ public class EnemyController : PoolObject, IDamageable {
     }
 
     private void Start() {
-        followTarget = Player.Instance.gameObject;
+        OnObjectReuse();
+        //followTarget = Player.Instance.gameObject;
     }
-
 
     public bool trackTarget = false;
 
@@ -113,6 +115,15 @@ public class EnemyController : PoolObject, IDamageable {
             .Play();
     }
 
+    private bool isFollowTargetActive() {
+        if (followTarget != null && followTarget.activeSelf) {
+            if (followTargetController == null || (followTargetController != null && !followTargetController.isDying)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     private void Update() {
         //if (stopFrames-- > 0) {
         //    moverController.MoveSpeed = 0;
@@ -125,6 +136,11 @@ public class EnemyController : PoolObject, IDamageable {
             if (faceDir.x == -1) {
                 spriteRenderer.flipX = true;
             }
+            if (tag.Equals("Enemy")) {
+                TargetControl.Instance.Enemies.Remove(this);
+            } else {
+                TargetControl.Instance.Allies.Remove(this);
+            }
 
             isDying = true;
             movement.gameObject.SetActive(false);
@@ -136,10 +152,9 @@ public class EnemyController : PoolObject, IDamageable {
         }
 
         if (trackTarget && stopFrames-- <= 0) {
-            moverController.Speed = moveSpeed;
-            moverController.Direction = Vector2.zero;
-
-            if (followTarget != null) {
+            if (isFollowTargetActive()) {
+                moverController.Speed = moveSpeed;
+                moverController.Direction = Vector2.zero;
                 var followVector = (followTarget.transform.position - transform.position);
                 if (followVector.magnitude <= proximityStop) {
                     moverController.Speed = 0f;
@@ -154,11 +169,14 @@ public class EnemyController : PoolObject, IDamageable {
                     moverController.Direction = followVector;
                 }
 
+            } else {
+                moverController.Speed = 0f;
+                moverController.Direction = FACE_DOWN;
             }
             Face(moverController.Direction);
         } else {
             moverController.Speed = 0;
-            moverController.Direction = Vector2.zero;
+            moverController.Direction = FACE_DOWN;
         }
         moverController.UpdateVelocity();
 
@@ -212,8 +230,23 @@ public class EnemyController : PoolObject, IDamageable {
     }
 
     public override void OnObjectReuse() {
+        if (tag.Equals("Enemy")) {
+            TargetControl.Instance.Enemies.Add(this);
+            EnemyController o = TargetControl.Instance.ClosestAlly(this);
+            if (o == null) {
+                followTarget = Player.Instance.gameObject;
+            } else {
+                followTarget = o.gameObject;
+            }
+        } else {
+            TargetControl.Instance.Allies.Add(this);
+            EnemyController o = TargetControl.Instance.ClosestEnemy(this);
+            if (o != null) {
+                followTarget = o.gameObject;
+            }
+        }
+        followTargetController = followTarget.GetComponent<EnemyController>();
         enemy.Reset();
-        followTarget = Player.Instance.gameObject;
     }
 
 
