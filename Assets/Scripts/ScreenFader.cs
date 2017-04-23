@@ -26,12 +26,12 @@ public class ScreenFader : MonoBehaviour {
         tween.Play();
     }
 
-    public bool isFading() {
+    public bool IsFading() {
         return (tween != null && tween.IsPlaying());
     }
 
     public void CompleteFade() {
-        if (isFading()) {
+        if (IsFading()) {
             tween.Complete();
         }
     }

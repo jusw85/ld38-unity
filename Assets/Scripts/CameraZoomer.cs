@@ -25,8 +25,13 @@ public class CameraZoomer : MonoBehaviour {
         tween.Play();
     }
 
-    public bool isZooming() {
+    public bool IsZooming() {
         return (tween != null && tween.IsPlaying());
     }
 
+    public void CompleteZoom() {
+        if (IsZooming()) {
+            tween.Complete();
+        }
+    }
 }
