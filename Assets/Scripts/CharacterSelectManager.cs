@@ -5,12 +5,26 @@ using InControl;
 public class CharacterSelectManager : MonoBehaviour {
 
     public ScreenFader screenFader;
-    private Actions actions;
+    public CameraZoomer cameraZoomer;
     public int nextScene;
 
+    public float zoomOutSize;
+    public float zoomOutSpeed;
+    public float zoomInSize;
+    public float zoomInSpeed;
+
+    public Color fadeInColor;
+    public float fadeInSpeed;
+    public Color fadeOutColor;
+    public float fadeOutSpeed;
+
+    private Actions actions;
+    private bool isExiting = false;
+
     public void Start() {
-        screenFader.OnFadeOutComplete(OnFadeOutComplete);
         actions = Actions.CreateWithDefaultBindings();
+        screenFader.Fade(fadeInColor, fadeInSpeed, fadeFromColor: fadeOutColor);
+        cameraZoomer.Zoom(zoomOutSize, zoomOutSpeed, zoomFromSize: zoomInSize);
     }
 
     public void LoginButtonOnClick() {
@@ -24,8 +38,10 @@ public class CharacterSelectManager : MonoBehaviour {
     }
 
     public void Login() {
-        if (!screenFader.IsFadeOutPlaying()) {
-            screenFader.FadeOut();
+        if (!isExiting) {
+            isExiting = true;
+            cameraZoomer.Zoom(zoomInSize, zoomInSpeed);
+            screenFader.Fade(fadeOutColor, fadeOutSpeed, OnFadeOutComplete);
         }
     }
 

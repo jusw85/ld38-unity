@@ -6,10 +6,8 @@ public class LoadScreenManager : MonoBehaviour {
 
     public ScreenFader screenFader;
     public float loadDelay = 5f;
-
-    public void Awake() {
-        screenFader.OnFadeOutComplete(OnFadeOutComplete);
-    }
+    public Color fadeOutColor = Color.black;
+    public float fadeOutSpeed = 1.5f;
 
     public void Start() {
         StartCoroutine(Loading());
@@ -17,7 +15,7 @@ public class LoadScreenManager : MonoBehaviour {
 
     public IEnumerator Loading() {
         yield return new WaitForSeconds(loadDelay);
-        screenFader.FadeOut();
+        screenFader.Fade(fadeOutColor, fadeOutSpeed, OnFadeOutComplete);
     }
 
     public void OnFadeOutComplete() {

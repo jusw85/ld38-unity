@@ -1,27 +1,32 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
 public class CameraZoomer : MonoBehaviour {
-    
-    public float zoomToSize = 8.4375f;
-    public float zoomToSpeed = 1.5f;
-    public bool startZoomingOut = false;
 
     private Camera cam;
     private Tween tween;
 
-    public float finalOrthSize = 8.4375f;
-    public float zoomSpeed;
-
-    public void Start() {
+    public void Awake() {
         cam = Camera.main;
+    }
 
+    public void Zoom(float zoomToSize, float zoomToSpeed, TweenCallback callback = null, float? zoomFromSize = null) {
+        if (tween != null) {
+            tween.Complete();
+        }
+        if (zoomFromSize != null) {
+            cam.orthographicSize = zoomFromSize.Value;
+        }
         tween = DOTween
-            .To(() => cam.orthographicSize, x => cam.orthographicSize = x, finalOrthSize, zoomSpeed);
+            .To(() => cam.orthographicSize, x => cam.orthographicSize = x, zoomToSize, zoomToSpeed);
+        if (callback != null) {
+            tween.OnComplete(callback);
+        }
         tween.Play();
     }
 
+    public bool isZooming() {
+        return (tween != null && tween.IsPlaying());
+    }
 
 }

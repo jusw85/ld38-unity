@@ -5,11 +5,14 @@ using InControl;
 public class LoginManager : MonoBehaviour {
 
     public ScreenFader screenFader;
-    private Actions actions;
     public int nextScene;
+    public Color fadeOutColor;
+    public float fadeOutSpeed;
+
+    private Actions actions;
+    private bool isExiting = false;
 
     public void Start() {
-        screenFader.OnFadeOutComplete(OnFadeOutComplete);
         actions = Actions.CreateWithDefaultBindings();
     }
 
@@ -24,8 +27,9 @@ public class LoginManager : MonoBehaviour {
     }
 
     public void Login() {
-        if (!screenFader.IsFadeOutPlaying()) {
-            screenFader.FadeOut();
+        if (!isExiting) {
+            isExiting = true;
+            screenFader.Fade(fadeOutColor, fadeOutSpeed, OnFadeOutComplete);
         }
     }
 
