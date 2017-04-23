@@ -407,6 +407,7 @@ MonoBehaviour:
   screenFader: {fileID: 1638886688}
   cameraZoomer: {fileID: 2081399570}
   textBox: {fileID: 1872604781}
+  fadeDuration: 1.5
   endings:
   - sprite: {fileID: 21300000, guid: 497c688e34c725741b9f28d320f01f18, type: 3}
     textAsset: {fileID: 4900000, guid: eb050a2d099d11b45b554c472418bcd4, type: 3}
@@ -611,6 +612,11 @@ Prefab:
         type: 2}
       propertyPath: startFadingIn
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114694918911962660, guid: 62a9f1de0f6bb7247b4fc83cc96164cd,
+        type: 2}
+      propertyPath: m_Color.a
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 62a9f1de0f6bb7247b4fc83cc96164cd, type: 2}

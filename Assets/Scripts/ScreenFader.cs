@@ -30,4 +30,10 @@ public class ScreenFader : MonoBehaviour {
         return (tween != null && tween.IsPlaying());
     }
 
+    public void CompleteFade() {
+        if (isFading()) {
+            tween.Complete();
+        }
+    }
+
 }

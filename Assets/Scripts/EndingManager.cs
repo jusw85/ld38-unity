@@ -16,6 +16,7 @@ public class EndingManager : MonoBehaviour {
     public ScreenFader screenFader;
     public CameraZoomer cameraZoomer;
     public Text textBox;
+    public float fadeDuration = 1f;
 
     public Ending[] endings;
 
@@ -31,20 +32,33 @@ public class EndingManager : MonoBehaviour {
 
     public void Update() {
         if (actions.Enter.WasPressed) {
-            if (!NextScreen()) {
-                Quit();
+            if (screenFader.isFading()) {
+                screenFader.CompleteFade();
+            } else {
+                if (idx <= endings.Length - 1) {
+                    PreNextScreen();
+                } else {
+                    screenFader.Fade(Color.black, fadeDuration, Quit);
+                }
             }
         }
     }
 
-    public bool NextScreen() {
+    public void PreNextScreen() {
+        screenFader.Fade(Color.black, fadeDuration, NextScreen);
+    }
+
+    public void NextScreen() {
         if (idx <= endings.Length - 1) {
             spriteRenderer.sprite = endings[idx].sprite;
             textBox.text = endings[idx].textAsset.text;
             idx++;
-            return true;
         }
-        return false;
+        PostNextScreen();
+    }
+
+    public void PostNextScreen() {
+        screenFader.Fade(Color.clear, 1f, fadeFromColor: Color.black);
     }
 
     public void Quit() {
