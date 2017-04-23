@@ -21,17 +21,29 @@ public class TargetControl : MonoBehaviour {
     private void Start() {
         StartCoroutine(Compute());
     }
+
     public IEnumerator Compute() {
         while (true) {
             foreach (EnemyController o in Enemies) {
                 EnemyController closestAlly = ClosestAlly(o);
-                if (closestAlly != null) {
-                    closestAlly.followTarget = o.gameObject;
-                    closestAlly.followTargetController = o;
+
+                Vector3 pos = o.transform.position;
+                float d = (pos - Player.Instance.transform.position).sqrMagnitude;
+
+                if (closestAlly != null && d > minD) {
                     o.followTarget = closestAlly.gameObject;
                     o.followTargetController = closestAlly;
                 } else {
                     o.followTarget = Player.Instance.gameObject;
+                    o.followTargetController = null;
+                }
+            }
+
+            foreach (EnemyController o in Allies) {
+                EnemyController closestEnemy = ClosestEnemy(o);
+                if (closestEnemy != null) {
+                    o.followTarget = closestEnemy.gameObject;
+                    o.followTargetController = closestEnemy;
                 }
             }
             yield return new WaitForSeconds(delay);
@@ -46,6 +58,8 @@ public class TargetControl : MonoBehaviour {
         return MinType(me, Allies);
     }
 
+    private float minD;
+
     private EnemyController MinType(EnemyController me, HashSet<EnemyController> list) {
         Vector3 pos = me.transform.position;
         float minD = float.MaxValue;
@@ -58,6 +72,7 @@ public class TargetControl : MonoBehaviour {
                 minO = o;
             }
         }
+        this.minD = minD;
         return minO;
     }
 

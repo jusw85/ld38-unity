@@ -245,7 +245,9 @@ public class EnemyController : PoolObject, IDamageable {
                 followTarget = o.gameObject;
             }
         }
-        followTargetController = followTarget.GetComponent<EnemyController>();
+        if (followTarget != null) {
+            followTargetController = followTarget.GetComponent<EnemyController>();
+        }
         enemy.Reset();
     }
 
