@@ -7,6 +7,7 @@ public class CharacterSelectManager : MonoBehaviour {
     public ScreenFader screenFader;
     public CameraZoomer cameraZoomer;
     public int nextScene;
+    public AudioClip buttonSound;
 
     public float zoomOutSize;
     public float zoomOutSpeed;
@@ -19,10 +20,15 @@ public class CharacterSelectManager : MonoBehaviour {
     public float fadeOutSpeed;
 
     private Actions actions;
+    private AudioSource audioSource;
     private bool isExiting = false;
 
-    public void Start() {
+    public void Awake() {
         actions = Actions.CreateWithDefaultBindings();
+        audioSource = GetComponent<AudioSource>();
+    }
+
+    public void Start() {
         screenFader.Fade(fadeInColor, fadeInSpeed, fadeFromColor: fadeOutColor);
         cameraZoomer.Zoom(zoomOutSize, zoomOutSpeed, zoomFromSize: zoomInSize);
     }
@@ -38,6 +44,9 @@ public class CharacterSelectManager : MonoBehaviour {
     }
 
     public void Login() {
+        if (!audioSource.isPlaying) {
+            audioSource.PlayOneShot(buttonSound);
+        }
         if (!isExiting) {
             isExiting = true;
             cameraZoomer.Zoom(zoomInSize, zoomInSpeed);

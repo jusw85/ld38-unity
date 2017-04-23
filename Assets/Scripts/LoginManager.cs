@@ -8,12 +8,15 @@ public class LoginManager : MonoBehaviour {
     public int nextScene;
     public Color fadeOutColor;
     public float fadeOutSpeed;
+    public AudioClip buttonSound;
 
     private Actions actions;
+    private AudioSource audioSource;
     private bool isExiting = false;
 
-    public void Start() {
+    public void Awake() {
         actions = Actions.CreateWithDefaultBindings();
+        audioSource = GetComponent<AudioSource>();
     }
 
     public void LoginButtonOnClick() {
@@ -27,6 +30,9 @@ public class LoginManager : MonoBehaviour {
     }
 
     public void Login() {
+        if (!audioSource.isPlaying) {
+            audioSource.PlayOneShot(buttonSound);
+        }
         if (!isExiting) {
             isExiting = true;
             screenFader.Fade(fadeOutColor, fadeOutSpeed, OnFadeOutComplete);
