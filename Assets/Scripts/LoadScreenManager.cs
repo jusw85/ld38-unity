@@ -9,6 +9,8 @@ public class LoadScreenManager : MonoBehaviour {
     public Color fadeOutColor = Color.black;
     public float fadeOutSpeed = 1.5f;
 
+    public int nextScene = 3;
+
     public void Start() {
         StartCoroutine(Loading());
     }
@@ -19,7 +21,7 @@ public class LoadScreenManager : MonoBehaviour {
     }
 
     public void OnFadeOutComplete() {
-        SceneManager.LoadSceneAsync(3);
+        SceneManager.LoadSceneAsync(nextScene);
     }
 
 }
