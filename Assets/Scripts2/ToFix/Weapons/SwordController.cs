@@ -23,7 +23,12 @@ public class SwordController : MonoBehaviour {
                 damageInfo.damage = 10;
                 damageable.Damage(damageInfo);
             }
+            if (gameObject.tag.Equals("Player")) {
+                Enemy ec = other.transform.parent.GetComponent<Enemy>();
+                EnemyHpBarController.Instance.SetValue(ec.currentHp, ec.maxHp);
+            }
         }
+
 
         //string tag = other.gameObject.tag;
         //if (tag == "enemy") {

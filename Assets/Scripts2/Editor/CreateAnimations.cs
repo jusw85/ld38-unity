@@ -31,9 +31,92 @@ public class CreateAnimations : EditorWindow {
         //CreateFootmanWalk();
         //CreateFootmanAttack();
 
-        CreateGruntIdle();
-        CreateGruntWalk();
-        CreateGruntAttack();
+        //CreateGruntIdle();
+        //CreateGruntWalk();
+        //CreateGruntAttack();
+
+        CreatePaladinIdle();
+        CreatePaladinWalk();
+        CreatePaladinAttack();
+    }
+
+    public static void CreatePaladinIdle() {
+        string baseClipPath = "Assets/Animations/Paladin/PaladinIdle";
+        int frameRate = 1;
+        string spritePath = "Assets/Sprites/paladin1_192x192.png";
+        string controllerPath = "Assets/Animations/Paladin/Paladin.controller";
+        string stateName = "Idle";
+        int[] idx = { 20, 20, 24, 24, 28, 28, 16, 16 };
+        int[] subBlendTreeIdx = { 0 };
+
+        NamedAnimationClip[] clips = Create4Dir(baseClipPath, frameRate, spritePath, idx, controllerPath, stateName, doFlip: false);
+        for (int i = 0; i < clips.Length; i++) {
+            CreateAnimationsUtility.SaveAnimationClip(clips[i].clip, clips[i].clipPath);
+            subBlendTreeIdx[subBlendTreeIdx.Length - 1] = i;
+            CreateAnimationsUtility.SetClipToAnimatorControllerBlendTree(clips[i].clip, controllerPath, 0, stateName, subBlendTreeIdx);
+        }
+    }
+
+    public static void CreatePaladinWalk() {
+        string baseClipPath = "Assets/Animations/Paladin/PaladinWalk";
+        int frameRate = 12;
+        string spritePath = "Assets/Sprites/paladin1_192x192.png";
+        string controllerPath = "Assets/Animations/Paladin/Paladin.controller";
+        string stateName = "Walk";
+        int[] idx = { 4, 7, 8, 11, 12, 15, 0, 3 };
+        int[] subBlendTreeIdx = { 0 };
+
+        NamedAnimationClip[] clips = Create4Dir(baseClipPath, frameRate, spritePath, idx, controllerPath, stateName, doFlip: false);
+        for (int i = 0; i < clips.Length; i++) {
+            CreateAnimationsUtility.SaveAnimationClip(clips[i].clip, clips[i].clipPath);
+            subBlendTreeIdx[subBlendTreeIdx.Length - 1] = i;
+            CreateAnimationsUtility.SetClipToAnimatorControllerBlendTree(clips[i].clip, controllerPath, 0, stateName, subBlendTreeIdx);
+        }
+    }
+
+    public static void CreatePaladinAttack() {
+        string baseClipPath = "Assets/Animations/Paladin/PaladinAttack";
+        int frameRate = 12;
+        string spritePath = "Assets/Sprites/paladin1_192x192.png";
+        string controllerPath = "Assets/Animations/Paladin/Paladin.controller";
+        string stateName = "Attack";
+        int[] idx = { 20, 23, 24, 27, 28, 31, 16, 19 };
+        int[] subBlendTreeIdx = { 0 };
+
+        NamedAnimationClip[] clips = Create4Dir(baseClipPath, frameRate, spritePath, idx, controllerPath, stateName, doFlip: false);
+        for (int i = 0; i < clips.Length; i++) {
+            AnimationClip clip = clips[i].clip;
+            string clipPath = clips[i].clipPath;
+            int[] keyFrames = { 0, 2, 3 };
+            AddCurve(clip, typeof(BoxCollider2D), "Bullet", "m_Enabled", ParamsToKeyFrames(keyFrames, 0f, 1f, 0f));
+            switch (i) {
+                case 0:
+                    AddCurve(clip, typeof(Transform), "Bullet", "m_LocalPosition.y", ParamsToKeyFrames(keyFrames, 0f, -2f, 0f));
+                    AddCurve(clip, typeof(Transform), "Bullet", "m_LocalScale.x", ParamsToKeyFrames(keyFrames, 1f, 2.5f, 1f));
+                    AddCurve(clip, typeof(Transform), "Bullet", "m_LocalScale.y", ParamsToKeyFrames(keyFrames, 1f, 2f, 1f));
+                    break;
+                case 1:
+                    AddCurve(clip, typeof(Transform), "Bullet", "m_LocalPosition.x", ParamsToKeyFrames(keyFrames, 0f, 1f, 0f));
+                    AddCurve(clip, typeof(Transform), "Bullet", "m_LocalPosition.y", ParamsToKeyFrames(keyFrames, 0f, -1f, 0f));
+                    AddCurve(clip, typeof(Transform), "Bullet", "m_LocalScale.x", ParamsToKeyFrames(keyFrames, 1f, 2f, 1f));
+                    AddCurve(clip, typeof(Transform), "Bullet", "m_LocalScale.y", ParamsToKeyFrames(keyFrames, 1f, 2.5f, 1f));
+                    break;
+                case 2:
+                    AddCurve(clip, typeof(Transform), "Bullet", "m_LocalPosition.y", ParamsToKeyFrames(keyFrames, 0f, 0f, 0f));
+                    AddCurve(clip, typeof(Transform), "Bullet", "m_LocalScale.x", ParamsToKeyFrames(keyFrames, 1f, 2.5f, 1f));
+                    AddCurve(clip, typeof(Transform), "Bullet", "m_LocalScale.y", ParamsToKeyFrames(keyFrames, 1f, 3f, 1f));
+                    break;
+                case 3:
+                    AddCurve(clip, typeof(Transform), "Bullet", "m_LocalPosition.x", ParamsToKeyFrames(keyFrames, 0f, -1f, 0f));
+                    AddCurve(clip, typeof(Transform), "Bullet", "m_LocalPosition.y", ParamsToKeyFrames(keyFrames, 0f, -1f, 0f));
+                    AddCurve(clip, typeof(Transform), "Bullet", "m_LocalScale.x", ParamsToKeyFrames(keyFrames, 1f, 2f, 1f));
+                    AddCurve(clip, typeof(Transform), "Bullet", "m_LocalScale.y", ParamsToKeyFrames(keyFrames, 1f, 2.5f, 1f));
+                    break;
+            }
+            CreateAnimationsUtility.SaveAnimationClip(clip, clipPath);
+            subBlendTreeIdx[subBlendTreeIdx.Length - 1] = i;
+            CreateAnimationsUtility.SetClipToAnimatorControllerBlendTree(clip, controllerPath, 0, stateName, subBlendTreeIdx);
+        }
     }
 
     public static void CreateFootmanIdle() {

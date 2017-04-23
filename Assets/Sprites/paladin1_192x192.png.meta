@@ -1,45 +1,41 @@
 fileFormatVersion: 2
-guid: 30a69d4526ae4b242bc49e09f6158090
-timeCreated: 1492956983
+guid: 7e3a50cdf092c064ab5bdec9728e8272
+timeCreated: 1492966125
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: grunt1_192x192_0
-    21300002: grunt1_192x192_1
-    21300004: grunt1_192x192_2
-    21300006: grunt1_192x192_3
-    21300008: grunt1_192x192_4
-    21300010: grunt1_192x192_5
-    21300012: grunt1_192x192_6
-    21300014: grunt1_192x192_7
-    21300016: grunt1_192x192_8
-    21300018: grunt1_192x192_9
-    21300020: grunt1_192x192_10
-    21300022: grunt1_192x192_11
-    21300024: grunt1_192x192_12
-    21300026: grunt1_192x192_13
-    21300028: grunt1_192x192_14
-    21300030: grunt1_192x192_15
-    21300032: grunt1_192x192_16
-    21300034: grunt1_192x192_17
-    21300036: grunt1_192x192_18
-    21300038: grunt1_192x192_19
-    21300040: grunt1_192x192_20
-    21300042: grunt1_192x192_21
-    21300044: grunt1_192x192_22
-    21300046: grunt1_192x192_23
-    21300048: grunt1_192x192_24
-    21300050: grunt1_192x192_25
-    21300052: grunt1_192x192_26
-    21300054: grunt1_192x192_27
-    21300056: grunt1_192x192_28
-    21300058: grunt1_192x192_29
-    21300060: grunt1_192x192_30
-    21300062: grunt1_192x192_31
-    21300064: grunt1_192x192_32
-    21300066: grunt1_192x192_33
-    21300068: grunt1_192x192_34
-    21300070: grunt1_192x192_35
+    21300000: paladin1_192x192_0
+    21300002: paladin1_192x192_1
+    21300004: paladin1_192x192_2
+    21300006: paladin1_192x192_3
+    21300008: paladin1_192x192_4
+    21300010: paladin1_192x192_5
+    21300012: paladin1_192x192_6
+    21300014: paladin1_192x192_7
+    21300016: paladin1_192x192_8
+    21300018: paladin1_192x192_9
+    21300020: paladin1_192x192_10
+    21300022: paladin1_192x192_11
+    21300024: paladin1_192x192_12
+    21300026: paladin1_192x192_13
+    21300028: paladin1_192x192_14
+    21300030: paladin1_192x192_15
+    21300032: paladin1_192x192_16
+    21300034: paladin1_192x192_17
+    21300036: paladin1_192x192_18
+    21300038: paladin1_192x192_19
+    21300040: paladin1_192x192_20
+    21300042: paladin1_192x192_21
+    21300044: paladin1_192x192_22
+    21300046: paladin1_192x192_23
+    21300048: paladin1_192x192_24
+    21300050: paladin1_192x192_25
+    21300052: paladin1_192x192_26
+    21300054: paladin1_192x192_27
+    21300056: paladin1_192x192_28
+    21300058: paladin1_192x192_29
+    21300060: paladin1_192x192_30
+    21300062: paladin1_192x192_31
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -114,59 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: grunt1_192x192_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 1536
-        width: 192
-        height: 192
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: grunt1_192x192_1
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 1536
-        width: 192
-        height: 192
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: grunt1_192x192_2
-      rect:
-        serializedVersion: 2
-        x: 384
-        y: 1536
-        width: 192
-        height: 192
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: grunt1_192x192_3
-      rect:
-        serializedVersion: 2
-        x: 576
-        y: 1536
-        width: 192
-        height: 192
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: grunt1_192x192_4
+      name: paladin1_192x192_0
       rect:
         serializedVersion: 2
         x: 0
@@ -179,7 +123,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: grunt1_192x192_5
+      name: paladin1_192x192_1
       rect:
         serializedVersion: 2
         x: 192
@@ -192,7 +136,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: grunt1_192x192_6
+      name: paladin1_192x192_2
       rect:
         serializedVersion: 2
         x: 384
@@ -205,7 +149,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: grunt1_192x192_7
+      name: paladin1_192x192_3
       rect:
         serializedVersion: 2
         x: 576
@@ -218,7 +162,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: grunt1_192x192_8
+      name: paladin1_192x192_4
       rect:
         serializedVersion: 2
         x: 0
@@ -231,7 +175,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: grunt1_192x192_9
+      name: paladin1_192x192_5
       rect:
         serializedVersion: 2
         x: 192
@@ -244,7 +188,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: grunt1_192x192_10
+      name: paladin1_192x192_6
       rect:
         serializedVersion: 2
         x: 384
@@ -257,7 +201,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: grunt1_192x192_11
+      name: paladin1_192x192_7
       rect:
         serializedVersion: 2
         x: 576
@@ -270,7 +214,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: grunt1_192x192_12
+      name: paladin1_192x192_8
       rect:
         serializedVersion: 2
         x: 0
@@ -283,7 +227,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: grunt1_192x192_13
+      name: paladin1_192x192_9
       rect:
         serializedVersion: 2
         x: 192
@@ -296,7 +240,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: grunt1_192x192_14
+      name: paladin1_192x192_10
       rect:
         serializedVersion: 2
         x: 384
@@ -309,7 +253,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: grunt1_192x192_15
+      name: paladin1_192x192_11
       rect:
         serializedVersion: 2
         x: 576
@@ -322,7 +266,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: grunt1_192x192_16
+      name: paladin1_192x192_12
       rect:
         serializedVersion: 2
         x: 0
@@ -335,7 +279,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: grunt1_192x192_17
+      name: paladin1_192x192_13
       rect:
         serializedVersion: 2
         x: 192
@@ -348,7 +292,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: grunt1_192x192_18
+      name: paladin1_192x192_14
       rect:
         serializedVersion: 2
         x: 384
@@ -361,7 +305,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: grunt1_192x192_19
+      name: paladin1_192x192_15
       rect:
         serializedVersion: 2
         x: 576
@@ -374,7 +318,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: grunt1_192x192_20
+      name: paladin1_192x192_16
       rect:
         serializedVersion: 2
         x: 0
@@ -387,7 +331,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: grunt1_192x192_21
+      name: paladin1_192x192_17
       rect:
         serializedVersion: 2
         x: 192
@@ -400,7 +344,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: grunt1_192x192_22
+      name: paladin1_192x192_18
       rect:
         serializedVersion: 2
         x: 384
@@ -413,7 +357,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: grunt1_192x192_23
+      name: paladin1_192x192_19
       rect:
         serializedVersion: 2
         x: 576
@@ -426,7 +370,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: grunt1_192x192_24
+      name: paladin1_192x192_20
       rect:
         serializedVersion: 2
         x: 0
@@ -439,7 +383,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: grunt1_192x192_25
+      name: paladin1_192x192_21
       rect:
         serializedVersion: 2
         x: 192
@@ -452,7 +396,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: grunt1_192x192_26
+      name: paladin1_192x192_22
       rect:
         serializedVersion: 2
         x: 384
@@ -465,7 +409,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: grunt1_192x192_27
+      name: paladin1_192x192_23
       rect:
         serializedVersion: 2
         x: 576
@@ -478,7 +422,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: grunt1_192x192_28
+      name: paladin1_192x192_24
       rect:
         serializedVersion: 2
         x: 0
@@ -491,7 +435,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: grunt1_192x192_29
+      name: paladin1_192x192_25
       rect:
         serializedVersion: 2
         x: 192
@@ -504,7 +448,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: grunt1_192x192_30
+      name: paladin1_192x192_26
       rect:
         serializedVersion: 2
         x: 384
@@ -517,7 +461,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: grunt1_192x192_31
+      name: paladin1_192x192_27
       rect:
         serializedVersion: 2
         x: 576
@@ -530,7 +474,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: grunt1_192x192_32
+      name: paladin1_192x192_28
       rect:
         serializedVersion: 2
         x: 0
@@ -543,7 +487,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: grunt1_192x192_33
+      name: paladin1_192x192_29
       rect:
         serializedVersion: 2
         x: 192
@@ -556,7 +500,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: grunt1_192x192_34
+      name: paladin1_192x192_30
       rect:
         serializedVersion: 2
         x: 384
@@ -569,7 +513,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: grunt1_192x192_35
+      name: paladin1_192x192_31
       rect:
         serializedVersion: 2
         x: 576
@@ -582,7 +526,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     outline: []
-  spritePackingTag: Enemy2
+  spritePackingTag: Player2
   userData: 
   assetBundleName: 
   assetBundleVariant: 

@@ -130,80 +130,81 @@ public class Player : MonoBehaviour {
             Damage(frameInfo.damageInfo);
         }
 
-        if (state.hasChanged) {
-            if (state.prev == AnimStates.ROLL) {
-                StopRoll();
-            }
+        //if (state.hasChanged) {
+        //    if (state.prev == AnimStates.ROLL) {
+        //        StopRoll();
+        //    }
 
-            if (state.curr == AnimStates.ATTACK1) {
-                frameInfo.isAttacking = true;
-                ResetCharge();
-                if (c.isMoved) {
-                    Face(c.move);
-                }
-            } else if (state.curr == AnimStates.ATTACK2) {
-                frameInfo.isAttacking = true;
-                ResetCharge();
-                if (c.isMoved) {
-                    Face(c.move);
-                }
-            } else if (state.curr == AnimStates.ATTACK3) {
-                frameInfo.isAttacking = true;
-                ResetCharge();
-                if (c.isMoved) {
-                    Face(c.move);
-                }
-            } else if (state.curr == AnimStates.CHARGEATTACK) {
-                frameInfo.isChargeAttacking = true;
-                ResetCharge();
-                if (c.isMoved) {
-                    Face(c.move);
-                }
-            } else if (state.curr == AnimStates.ROLL) {
-                if (c.isMoved) {
-                    StartRoll(c.move);
-                } else {
-                    StartRoll(FaceDir);
-                }
-            }
-        }
+        //    if (state.curr == AnimStates.ATTACK1) {
+        //        frameInfo.isAttacking = true;
+        //        ResetCharge();
+        //        if (c.isMoved) {
+        //            Face(c.move);
+        //        }
+        //    } else if (state.curr == AnimStates.ATTACK2) {
+        //        frameInfo.isAttacking = true;
+        //        ResetCharge();
+        //        if (c.isMoved) {
+        //            Face(c.move);
+        //        }
+        //    } else if (state.curr == AnimStates.ATTACK3) {
+        //        frameInfo.isAttacking = true;
+        //        ResetCharge();
+        //        if (c.isMoved) {
+        //            Face(c.move);
+        //        }
+        //    } else if (state.curr == AnimStates.CHARGEATTACK) {
+        //        frameInfo.isChargeAttacking = true;
+        //        ResetCharge();
+        //        if (c.isMoved) {
+        //            Face(c.move);
+        //        }
+        //    } else if (state.curr == AnimStates.ROLL) {
+        //        if (c.isMoved) {
+        //            StartRoll(c.move);
+        //        } else {
+        //            StartRoll(FaceDir);
+        //        }
+        //    }
+        //}
 
         if (state.curr == AnimStates.IDLE) {
-            if (c.isAttackHeld) {
-                AddCharge(Time.deltaTime);
-            }
+            //if (c.isAttackHeld) {
+            //    AddCharge(Time.deltaTime);
+            //}
             if (c.isMoved) {
                 Walk(c.move);
             }
-            if (c.isAttackReleased) {
-                if (IsFullyCharged) {
-                    frameInfo.toChargeAttack = true;
-                } else if (IsCharging) {
-                    frameInfo.toAttack = true;
-                }
-                ResetCharge();
-            }
+            //if (c.isAttackReleased) {
+            //    if (IsFullyCharged) {
+            //        frameInfo.toChargeAttack = true;
+            //    } else if (IsCharging) {
+            //        frameInfo.toAttack = true;
+            //    }
+            //    ResetCharge();
+            //}
 
         } else if (state.curr == AnimStates.WALK) {
-            if (c.isAttackHeld) {
-                AddCharge(Time.deltaTime);
-            }
+            //if (c.isAttackHeld) {
+            //    AddCharge(Time.deltaTime);
+            //}
             if (c.isMoved) {
                 Walk(c.move);
             }
-            if (c.isAttackReleased) {
-                if (IsFullyCharged) {
-                    frameInfo.toChargeAttack = true;
-                } else if (IsCharging) {
-                    frameInfo.toAttack = true;
-                }
-                ResetCharge();
-            }
+            //if (c.isAttackReleased) {
+            //    if (IsFullyCharged) {
+            //        frameInfo.toChargeAttack = true;
+            //    } else if (IsCharging) {
+            //        frameInfo.toAttack = true;
+            //    }
+            //    ResetCharge();
+            //}
 
-        } else if (state.curr == AnimStates.ROLL) {
-            mover.UpdateVelocity();
+        } 
+        //else if (state.curr == AnimStates.ROLL) {
+        //    mover.UpdateVelocity();
 
-        }
+        //}
     }
 
 }

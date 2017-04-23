@@ -60,7 +60,7 @@ public class Enemy : MonoBehaviour {
         float prevHp = currentHp;
         currentHp -= damageInfo.damage;
 
-        EnemyHpBarController.Instance.SetValue(currentHp, maxHp);
+        //EnemyHpBarController.Instance.SetValue(currentHp, maxHp);
         //PlayerHpChangeEvent ev = new PlayerHpChangeEvent(prevHp, currentHp, maxHp);
         //eventManager.Publish(Events.PLAYER_HPCHANGE, ev);
 
