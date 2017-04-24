@@ -481,6 +481,8 @@ MonoBehaviour:
     textAsset: {fileID: 4900000, guid: 1076306b6e3177f42aabce0d8165b165, type: 3}
   - sprite: {fileID: 21300000, guid: 87a10465d7d97c8448e54604f5777e21, type: 3}
     textAsset: {fileID: 4900000, guid: 8fdadeb09723b704dab953522cfc3e0f, type: 3}
+  - sprite: {fileID: 21300000, guid: 149bb7dcedf5c6b45b8865f886a5e362, type: 3}
+    textAsset: {fileID: 4900000, guid: 57ab07be53d970649934a89ba694d6e7, type: 3}
 --- !u!4 &1236208535
 Transform:
   m_ObjectHideFlags: 0

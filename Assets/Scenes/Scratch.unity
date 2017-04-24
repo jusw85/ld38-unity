@@ -207,47 +207,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 212300540497765622, guid: 75e981157cfec654a85161d26d5230f6,
-        type: 2}
-      propertyPath: m_Color.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114463622701243276, guid: 75e981157cfec654a85161d26d5230f6,
-        type: 2}
-      propertyPath: maxHp
-      value: 10000
-      objectReference: {fileID: 0}
-    - target: {fileID: 1232798204613538, guid: 75e981157cfec654a85161d26d5230f6, type: 2}
-      propertyPath: m_TagString
-      value: Ally
-      objectReference: {fileID: 0}
-    - target: {fileID: 114291135455340436, guid: 75e981157cfec654a85161d26d5230f6,
-        type: 2}
-      propertyPath: targetTag
-      value: Enemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 1368813582173880, guid: 75e981157cfec654a85161d26d5230f6, type: 2}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 95333816355190240, guid: 75e981157cfec654a85161d26d5230f6,
-        type: 2}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: b488e0a90b0c83741ab8fe075d06d421, type: 2}
-    - target: {fileID: 1543687987374590, guid: 75e981157cfec654a85161d26d5230f6, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1261958280654318, guid: 75e981157cfec654a85161d26d5230f6, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114291135455340436, guid: 75e981157cfec654a85161d26d5230f6,
-        type: 2}
-      propertyPath: damage
-      value: 40
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 75e981157cfec654a85161d26d5230f6, type: 2}
   m_IsPrefabParent: 0
