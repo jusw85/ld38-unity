@@ -18,7 +18,7 @@ public class TargetControl : MonoBehaviour {
     public float delay = 1f;
 
     private void Start() {
-        BgmManager.Instance.PlayBattle();
+        BgmManager.Instance.PlayTown();
         StartCoroutine(Compute());
     }
 
@@ -61,6 +61,9 @@ public class TargetControl : MonoBehaviour {
     private float minD;
 
     private EnemyController MinType(EnemyController me, HashSet<EnemyController> list) {
+        if (me == null) {
+            return null;
+        }
         Vector3 pos = me.transform.position;
         float minD = float.MaxValue;
         EnemyController minO = null;

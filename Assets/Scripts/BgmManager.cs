@@ -9,6 +9,7 @@ public class BgmManager : MonoBehaviour {
 
     public AudioClip town;
     public AudioClip battle;
+    public AudioClip whatsapp;
 
     private AudioSource source;
     private EventManager em;
@@ -31,5 +32,11 @@ public class BgmManager : MonoBehaviour {
     public void PlayBattle() {
         PlaySfxEvent ev = new PlaySfxEvent(battle);
         em.Publish(Events.PLAY_BGM, ev);
+    }
+
+    public void PlayWhatsapp() {
+        source.PlayOneShot(whatsapp);
+        //PlaySfxEvent ev = new PlaySfxEvent(whatsapp);
+        //em.Publish(Events.PLAY_SFX, ev);
     }
 }

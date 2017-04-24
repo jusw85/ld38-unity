@@ -680,7 +680,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileForce: 10
-  damage: 10
+  damage: 5
   targetTag: Ally
 --- !u!114 &114619565890121588
 MonoBehaviour:

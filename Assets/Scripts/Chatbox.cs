@@ -93,6 +93,7 @@ public class Chatbox : MonoBehaviour {
     public bool fullPause = true;
 
     public GameObject npc;
+    private GameObject dkobj;
 
     private IEnumerator ChatSpam() {
         while (textIdx < texts.Length) {
@@ -104,7 +105,14 @@ public class Chatbox : MonoBehaviour {
             }
             string nxt = texts[textIdx++];
             if (nxt.StartsWith("zz8")) {
+                Destroy(dkobj);
                 yield return new WaitForSeconds(5f);
+                BgmManager.Instance.PlayWhatsapp();
+                yield return new WaitForSeconds(1f);
+                BgmManager.Instance.PlayWhatsapp();
+                yield return new WaitForSeconds(1f);
+                BgmManager.Instance.PlayWhatsapp();
+                yield return new WaitForSeconds(1f);
                 GameObject go = GameObject.Find("UI Container");
                 Destroy(go);
                 go = GameObject.Find("(singleton) Toolbox");
@@ -119,7 +127,7 @@ public class Chatbox : MonoBehaviour {
             } else if (nxt.StartsWith("zz6")) {
                 sp1.spawnInstances = 10;
                 sp2.spawnInstances = 10;
-                Instantiate(dk, bunnyController.transform.position, Quaternion.identity);
+                dkobj = Instantiate(dk, bunnyController.transform.position, Quaternion.identity);
                 bunnyController.Destroy();
                 yield return new WaitForSeconds(1f);
 
