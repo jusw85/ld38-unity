@@ -29,14 +29,14 @@ public class CreateAnimations : EditorWindow {
 
         //CreateFootmanIdle();
         //CreateFootmanWalk();
-        //CreateFootmanAttack();
+        CreateFootmanAttack();
 
         //CreateGruntIdle();
         //CreateGruntWalk();
-        //CreateGruntAttack();
+        CreateGruntAttack();
 
-        CreatePaladinIdle();
-        CreatePaladinWalk();
+        //CreatePaladinIdle();
+        //CreatePaladinWalk();
         CreatePaladinAttack();
     }
 
@@ -91,26 +91,26 @@ public class CreateAnimations : EditorWindow {
             AddCurve(clip, typeof(BoxCollider2D), "Bullet", "m_Enabled", ParamsToKeyFrames(keyFrames, 0f, 1f, 0f));
             switch (i) {
                 case 0:
-                    AddCurve(clip, typeof(Transform), "Bullet", "m_LocalPosition.y", ParamsToKeyFrames(keyFrames, 0f, -2f, 0f));
+                    AddCurve(clip, typeof(Transform), "Bullet", "m_LocalPosition.y", ParamsToKeyFrames(keyFrames, 0f, -3f, 0f));
                     AddCurve(clip, typeof(Transform), "Bullet", "m_LocalScale.x", ParamsToKeyFrames(keyFrames, 1f, 2.5f, 1f));
-                    AddCurve(clip, typeof(Transform), "Bullet", "m_LocalScale.y", ParamsToKeyFrames(keyFrames, 1f, 2f, 1f));
+                    AddCurve(clip, typeof(Transform), "Bullet", "m_LocalScale.y", ParamsToKeyFrames(keyFrames, 1f, 3f, 1f));
                     break;
                 case 1:
                     AddCurve(clip, typeof(Transform), "Bullet", "m_LocalPosition.x", ParamsToKeyFrames(keyFrames, 0f, 1f, 0f));
                     AddCurve(clip, typeof(Transform), "Bullet", "m_LocalPosition.y", ParamsToKeyFrames(keyFrames, 0f, -1f, 0f));
-                    AddCurve(clip, typeof(Transform), "Bullet", "m_LocalScale.x", ParamsToKeyFrames(keyFrames, 1f, 2f, 1f));
-                    AddCurve(clip, typeof(Transform), "Bullet", "m_LocalScale.y", ParamsToKeyFrames(keyFrames, 1f, 2.5f, 1f));
+                    AddCurve(clip, typeof(Transform), "Bullet", "m_LocalScale.x", ParamsToKeyFrames(keyFrames, 1f, 2.5f, 1f));
+                    AddCurve(clip, typeof(Transform), "Bullet", "m_LocalScale.y", ParamsToKeyFrames(keyFrames, 1f, 3.5f, 1f));
                     break;
                 case 2:
-                    AddCurve(clip, typeof(Transform), "Bullet", "m_LocalPosition.y", ParamsToKeyFrames(keyFrames, 0f, 0f, 0f));
+                    AddCurve(clip, typeof(Transform), "Bullet", "m_LocalPosition.y", ParamsToKeyFrames(keyFrames, 0f, 1f, 0f));
                     AddCurve(clip, typeof(Transform), "Bullet", "m_LocalScale.x", ParamsToKeyFrames(keyFrames, 1f, 2.5f, 1f));
                     AddCurve(clip, typeof(Transform), "Bullet", "m_LocalScale.y", ParamsToKeyFrames(keyFrames, 1f, 3f, 1f));
                     break;
                 case 3:
                     AddCurve(clip, typeof(Transform), "Bullet", "m_LocalPosition.x", ParamsToKeyFrames(keyFrames, 0f, -1f, 0f));
                     AddCurve(clip, typeof(Transform), "Bullet", "m_LocalPosition.y", ParamsToKeyFrames(keyFrames, 0f, -1f, 0f));
-                    AddCurve(clip, typeof(Transform), "Bullet", "m_LocalScale.x", ParamsToKeyFrames(keyFrames, 1f, 2f, 1f));
-                    AddCurve(clip, typeof(Transform), "Bullet", "m_LocalScale.y", ParamsToKeyFrames(keyFrames, 1f, 2.5f, 1f));
+                    AddCurve(clip, typeof(Transform), "Bullet", "m_LocalScale.x", ParamsToKeyFrames(keyFrames, 1f, 2.5f, 1f));
+                    AddCurve(clip, typeof(Transform), "Bullet", "m_LocalScale.y", ParamsToKeyFrames(keyFrames, 1f, 3.5f, 1f));
                     break;
             }
             CreateAnimationsUtility.SaveAnimationClip(clip, clipPath);
@@ -156,7 +156,7 @@ public class CreateAnimations : EditorWindow {
 
     public static void CreateFootmanAttack() {
         string baseClipPath = "Assets/Animations/Footman/FootmanAttack";
-        int frameRate = 12;
+        int frameRate = 8;
         string spritePath = "Assets/Sprites/footman1_192x192.png";
         string controllerPath = "Assets/Animations/Footman/Footman.controller";
         string stateName = "Attack";
@@ -184,7 +184,7 @@ public class CreateAnimations : EditorWindow {
                 case 2:
                     AddCurve(clip, typeof(Transform), "Bullet", "m_LocalPosition.y", ParamsToKeyFrames(keyFrames, 0f, 0f, 0f));
                     AddCurve(clip, typeof(Transform), "Bullet", "m_LocalScale.x", ParamsToKeyFrames(keyFrames, 1f, 2.5f, 1f));
-                    AddCurve(clip, typeof(Transform), "Bullet", "m_LocalScale.y", ParamsToKeyFrames(keyFrames, 1f, 3f, 1f));
+                    AddCurve(clip, typeof(Transform), "Bullet", "m_LocalScale.y", ParamsToKeyFrames(keyFrames, 1f, 2f, 1f));
                     break;
                 case 3:
                     AddCurve(clip, typeof(Transform), "Bullet", "m_LocalPosition.x", ParamsToKeyFrames(keyFrames, 0f, -1f, 0f));
@@ -235,7 +235,7 @@ public class CreateAnimations : EditorWindow {
 
     public static void CreateGruntAttack() {
         string baseClipPath = "Assets/Animations/Grunt/GruntAttack";
-        int frameRate = 12;
+        int frameRate = 8;
         string spritePath = "Assets/Sprites/grunt1_192x192.png";
         string controllerPath = "Assets/Animations/Grunt/Grunt.controller";
         string stateName = "Attack";
@@ -263,7 +263,7 @@ public class CreateAnimations : EditorWindow {
                 case 2:
                     AddCurve(clip, typeof(Transform), "Bullet", "m_LocalPosition.y", ParamsToKeyFrames(keyFrames, 0f, 0f, 0f));
                     AddCurve(clip, typeof(Transform), "Bullet", "m_LocalScale.x", ParamsToKeyFrames(keyFrames, 1f, 2.5f, 1f));
-                    AddCurve(clip, typeof(Transform), "Bullet", "m_LocalScale.y", ParamsToKeyFrames(keyFrames, 1f, 3f, 1f));
+                    AddCurve(clip, typeof(Transform), "Bullet", "m_LocalScale.y", ParamsToKeyFrames(keyFrames, 1f, 2f, 1f));
                     break;
                 case 3:
                     AddCurve(clip, typeof(Transform), "Bullet", "m_LocalPosition.x", ParamsToKeyFrames(keyFrames, 0f, -1f, 0f));

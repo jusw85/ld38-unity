@@ -344,4 +344,4 @@ MonoBehaviour:
   loadDelay: 3
   fadeOutColor: {r: 0, g: 0, b: 0, a: 1}
   fadeOutSpeed: 1.5
-  nextScene: 4
+  nextScene: 3

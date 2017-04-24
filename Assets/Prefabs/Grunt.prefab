@@ -394,7 +394,7 @@ TextMesh:
   m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
   m_Color:
     serializedVersion: 2
-    rgba: 4278255360
+    rgba: 4278190335
 --- !u!114 &114137305496261174
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -469,6 +469,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileForce: 10
+  damage: 10
   targetTag: Ally
 --- !u!114 &114619565890121588
 MonoBehaviour:
@@ -501,7 +502,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f81c16b590aae4d4983b20dc957a9e3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 50
+  maxHp: 90
   walkSpeed: 12
 --- !u!114 &114906370444064820
 MonoBehaviour:

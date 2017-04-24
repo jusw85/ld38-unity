@@ -171,7 +171,7 @@ public class EnemyController : PoolObject, IDamageable {
 
             } else {
                 moverController.Speed = 0f;
-                moverController.Direction = FACE_DOWN;
+                //moverController.Direction = FACE_DOWN;
             }
             Face(moverController.Direction);
         } else {

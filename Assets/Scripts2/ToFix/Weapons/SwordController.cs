@@ -5,6 +5,7 @@ using UnityEngine;
 public class SwordController : MonoBehaviour {
 
     public float projectileForce = 50f;
+    public float damage = 10f;
     public string targetTag;
 
     private void OnTriggerEnter2D(Collider2D other) {
@@ -20,12 +21,12 @@ public class SwordController : MonoBehaviour {
             IDamageable damageable = (IDamageable)other.transform.parent.gameObject.GetComponent(typeof(IDamageable));
             if (damageable != null) {
                 DamageInfo damageInfo = new DamageInfo();
-                damageInfo.damage = 10;
+                damageInfo.damage = damage;
                 damageable.Damage(damageInfo);
             }
             if (gameObject.tag.Equals("Player")) {
                 Enemy ec = other.transform.parent.GetComponent<Enemy>();
-                EnemyHpBarController.Instance.SetValue(ec.currentHp, ec.maxHp);
+                EnemyHpBarController.Instance.SetValue(ec.currentHp - damage, ec.maxHp);
             }
         }
 

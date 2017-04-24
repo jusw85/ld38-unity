@@ -404,7 +404,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f81c16b590aae4d4983b20dc957a9e3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 50
+  maxHp: 30
   walkSpeed: 12
 --- !u!114 &114176176000196454
 MonoBehaviour:
@@ -500,6 +500,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileForce: 10
+  damage: 10
   targetTag: Enemy
 --- !u!114 &114984615164818124
 MonoBehaviour:
