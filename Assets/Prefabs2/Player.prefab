@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 4463355403497814}
   - component: {fileID: 23753990684928098}
   - component: {fileID: 102278251259420760}
+  - component: {fileID: 114046259240453246}
   m_Layer: 0
   m_Name: FloatingText
   m_TagString: Untagged
@@ -199,7 +200,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1171696524506032}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2, z: -1}
+  m_LocalPosition: {x: 0, y: 2, z: -5}
   m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_Children: []
   m_Father: {fileID: 4980428282740830}
@@ -395,6 +396,18 @@ TextMesh:
   m_Color:
     serializedVersion: 2
     rgba: 4278255360
+--- !u!114 &114046259240453246
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1171696524506032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7132ef7715f9a1f42b6f8e654ff5fa22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sortOrder: 12
 --- !u!114 &114072539984702268
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -480,7 +493,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a8fe63dbb3ed4b4c88d581296b2f205, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 10000
+  maxHp: 1000
   walkSpeed: 12
   rollSpeed: 36
   rollCooldown: 0

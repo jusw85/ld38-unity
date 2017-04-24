@@ -71,6 +71,7 @@ GameObject:
   - component: {fileID: 4734021173811974}
   - component: {fileID: 23547507282810172}
   - component: {fileID: 102636820482261702}
+  - component: {fileID: 114391726221674038}
   m_Layer: 0
   m_Name: FloatingText
   m_TagString: Untagged
@@ -309,7 +310,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1160117688251566}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2, z: -1}
+  m_LocalPosition: {x: 0, y: 2, z: -4}
   m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_Children: []
   m_Father: {fileID: 4790186152859370}
@@ -606,6 +607,7 @@ MonoBehaviour:
   trackTarget: 1
   moveSpeed: 5
   proximityStop: 1.5
+  attackDelay: 1
 --- !u!114 &114229781425489600
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -627,6 +629,18 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &114391726221674038
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1160117688251566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7132ef7715f9a1f42b6f8e654ff5fa22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sortOrder: 10
 --- !u!114 &114551940017608170
 MonoBehaviour:
   m_ObjectHideFlags: 1

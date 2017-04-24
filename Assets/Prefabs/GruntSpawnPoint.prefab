@@ -54,5 +54,5 @@ MonoBehaviour:
   spawnType: {fileID: 1928769932081040, guid: e9f207dae53cbc745b78bf4dd7139723, type: 2}
   initialDelay: 2
   runForever: 1
-  spawnInstances: 50
+  poolInstances: 50
   spawnInterval: 5

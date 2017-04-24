@@ -8,7 +8,10 @@ public class SpawnPointController : MonoBehaviour {
     public float initialDelay = 0f;
     public bool runForever = false;
     public int spawnInstances = 1;
+    public int poolInstances = 1;
     public float spawnInterval = 5f;
+
+    public int numPerSpawn = 1;
 
     private bool isStarted = false;
 
@@ -23,7 +26,7 @@ public class SpawnPointController : MonoBehaviour {
             isPooled = true;
 
             poolManager = Toolbox.GetOrAddComponent<PoolManager>();
-            poolManager.CreatePool(spawnType, Mathf.Min(spawnInstances, 50));
+            poolManager.CreatePool(spawnType, Mathf.Min(poolInstances, 50));
         }
     }
 
@@ -42,8 +45,10 @@ public class SpawnPointController : MonoBehaviour {
 
     private IEnumerator SpawnCoroutine() {
         isRunning = true;
-        while (runForever || spawnInstances-- > 0) {
-            Spawn();
+        while (runForever || (spawnInstances - numPerSpawn) > 0) {
+            for (int i = 0; i < numPerSpawn; i++) {
+                Spawn();
+            }
             yield return new WaitForSeconds(spawnInterval);
         }
         isRunning = false;
