@@ -1,6 +1,6 @@
 xXBunnies GalXx : Rez please! Rez PLSSSS!!
 --- Thevedis Foxbat casts resurrection on xXBunnies GalXx.
-xXBunnies GalXx is revived.
+zzz xXBunnies GalXx is revived.
 BG: Thanks alot Mr Foxbat!
 BG bows down graciously.
 BG smiles.
@@ -33,8 +33,7 @@ BG talks excitedly with TF.
 BG is very happy with TF!
 BG: THANK YOU! :3
 --- TF: no problem!
-//BG goes to the NPC and buys stuff..
-..
+zz2
 BG: ok i bought my stuff!
 BG is filled with happiness!
 BG smilyes shyly.
@@ -49,15 +48,14 @@ BG is filled with happiness!
 BG: maybe cos im a girl im just naturally friendly :D 
 BG: was hoping to meet more friends.
 --- TF: ok, cool.
-
-//incoming orc attack
+zz4
 --- TF: hey lets kill these grunts.
 BG: sure! you go ahead first
-// TF clears the first wave of 5 orcs
-// 2nd wave of 10 orcs
-// BG changes to full high level DK gear and smashes all the grunts 
+zz5
+zz6
 --- TF looks surprised.
+zz7
 BG: I was just messing with ya! 
 BG: dude.. G.I.R.L = guy in real life.
 BG: bye bye loser!
-...
+zz8

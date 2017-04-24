@@ -130,6 +130,11 @@ public class Player : MonoBehaviour {
             Damage(frameInfo.damageInfo);
         }
 
+        if (state.hasChanged) {
+            if (state.curr == AnimStates.ATTACK) {
+                frameInfo.isAttacking = true;
+            }
+        }
         //if (state.hasChanged) {
         //    if (state.prev == AnimStates.ROLL) {
         //        StopRoll();
@@ -200,7 +205,7 @@ public class Player : MonoBehaviour {
             //    ResetCharge();
             //}
 
-        } 
+        }
         //else if (state.curr == AnimStates.ROLL) {
         //    mover.UpdateVelocity();
 

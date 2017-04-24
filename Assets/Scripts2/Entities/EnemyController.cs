@@ -108,9 +108,10 @@ public class EnemyController : PoolObject, IDamageable {
     //}
 
     public static int ATTACKING = Animator.StringToHash("Base.Attack");
-    private bool isDying = false;
+    [System.NonSerialized]
+    public bool isDying = false;
 
-    private IEnumerator DeathWait() {
+    private IEnumerator DeathFade() {
         yield return new WaitForSeconds(3f);
         DOTween
             .To(() => spriteRenderer.color, x => spriteRenderer.color = x, Color.clear, 1.5f)
@@ -135,6 +136,8 @@ public class EnemyController : PoolObject, IDamageable {
     }
 
     public bool doDeathWait = true;
+    [System.NonSerialized]
+    public bool isProximityStop = false;
 
     private void Update() {
         //if (stopFrames-- > 0) {
@@ -161,7 +164,7 @@ public class EnemyController : PoolObject, IDamageable {
             hpbar.gameObject.SetActive(false);
             rb2d.isKinematic = true;
             if (doDeathWait) {
-                StartCoroutine(DeathWait());
+                StartCoroutine(DeathFade());
             }
             return;
         }
@@ -172,6 +175,7 @@ public class EnemyController : PoolObject, IDamageable {
                 moverController.Direction = Vector2.zero;
                 var followVector = (followTarget.transform.position - transform.position);
                 if (followVector.magnitude <= proximityStop) {
+                    isProximityStop = true;
                     moverController.Speed = 0f;
                     //Face(moverController.MoveDirection);
                     //moverController.MoveDirection = Vector2.zero;
@@ -183,6 +187,7 @@ public class EnemyController : PoolObject, IDamageable {
                         StartCoroutine(AttackCooldown());
                     }
                 } else {
+                    isProximityStop = false;
                     moverController.Direction = followVector;
                 }
 
@@ -229,6 +234,10 @@ public class EnemyController : PoolObject, IDamageable {
 
     private DamageInfo damageInfo;
 
+    public void Res() {
+        fsm.Play("Res");
+    }
+
     public void Damage(DamageInfo damageInfo) {
         //Vector3 inRot = damager.transform.eulerAngles;
         //Vector3 outRot = new Vector3(-inRot.z - 90f, 0f, 0f);
@@ -249,6 +258,7 @@ public class EnemyController : PoolObject, IDamageable {
     }
 
     public override void OnObjectReuse() {
+        enemy.currentHp = enemy.maxHp;
         isDying = false;
         movement.gameObject.SetActive(true);
         hitbox.gameObject.SetActive(true);

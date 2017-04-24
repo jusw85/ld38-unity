@@ -3,6 +3,7 @@ using System.Text;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Chatbox : MonoBehaviour {
 
@@ -19,6 +20,9 @@ public class Chatbox : MonoBehaviour {
 
     public EnemyController bunnyController;
     public Enemy bunny;
+    public SpawnPointController sp1;
+    public SpawnPointController sp2;
+    public GameObject dk;
 
     public void Awake() {
         //chatBox = GetComponentInChildren<Text>();
@@ -55,10 +59,26 @@ public class Chatbox : MonoBehaviour {
     }
 
     public IEnumerator Start1() {
-        while (bunny.currentHp > 0) {
+        while (bunny.currentHp > 0 || TargetControl.Instance.Enemies.Count > 0) {
             yield return new WaitForSeconds(1f);
         }
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(5f);
+        fullPause = false;
+    }
+
+    public IEnumerator Start2() {
+        while (TargetControl.Instance.Enemies.Count > 0) {
+            yield return new WaitForSeconds(1f);
+        }
+        yield return new WaitForSeconds(5f);
+        fullPause = false;
+    }
+
+    public IEnumerator Start3() {
+        while (!bunnyController.isProximityStop) {
+            yield return new WaitForSeconds(1f);
+        }
+        yield return new WaitForSeconds(5f);
         fullPause = false;
     }
 
@@ -72,6 +92,8 @@ public class Chatbox : MonoBehaviour {
     public bool inputPause = false;
     public bool fullPause = true;
 
+    public GameObject npc;
+
     private IEnumerator ChatSpam() {
         while (textIdx < texts.Length) {
             while (fullPause) {
@@ -81,23 +103,70 @@ public class Chatbox : MonoBehaviour {
                 yield return new WaitForSeconds(1f);
             }
             string nxt = texts[textIdx++];
-            if (nxt.StartsWith("--")) {
-                nxt = nxt.Remove(0, 3);
+            if (nxt.StartsWith("zz8")) {
+                yield return new WaitForSeconds(5f);
+                GameObject go = GameObject.Find("UI Container");
+                Destroy(go);
+                go = GameObject.Find("(singleton) Toolbox");
+                Destroy(go);
+                SceneManager.LoadSceneAsync(4);
+
+            } else if (nxt.StartsWith("zz7")) {
+                fullPause = true;
+                StartCoroutine(Start2());
+                yield return new WaitForSeconds(1f);
+
+            } else if (nxt.StartsWith("zz6")) {
+                sp1.spawnInstances = 10;
+                sp2.spawnInstances = 10;
+                Instantiate(dk, bunnyController.transform.position, Quaternion.identity);
+                bunnyController.Destroy();
+                yield return new WaitForSeconds(1f);
+
+            } else if (nxt.StartsWith("zz5")) {
+                fullPause = true;
+                StartCoroutine(Start2());
+                yield return new WaitForSeconds(1f);
+
+            } else if (nxt.StartsWith("zz4")) {
+                bunnyController.isDying = true;
+                yield return new WaitForSeconds(5f);
+                sp1.spawnInstances = 5;
+                sp2.spawnInstances = 5;
+
+            } else if (nxt.StartsWith("zz2")) {
+                bunnyController.followTarget = npc;
+                bunnyController.followTargetController = null;
+                fullPause = true;
+                StartCoroutine(Start3());
+                yield return new WaitForSeconds(1f);
+            } else if (nxt.StartsWith("---")) {
+                nxt = nxt.Remove(0, 4);
                 replyBox.text = nxt;
                 inputPause = true;
                 yield return new WaitForSeconds(1f);
             } else {
-                if (CheckTextHeight()) {
-                    toCheckChatHeight = true;
-                    TruncateString();
+
+                if (nxt.StartsWith("zzz")) {
+                    bunny.maxHp = 10000;
+                    bunnyController.isProximityStop = false;
+                    bunnyController.OnObjectReuse();
+                    bunnyController.Res();
+                    nxt = nxt.Remove(0, 4);
                 }
-                if (textIdx > 0) {
-                    sb.Append("\n");
+                if (nxt.Trim().Length > 0) {
+                    if (CheckTextHeight()) {
+                        toCheckChatHeight = true;
+                        TruncateString();
+                    }
+                    if (textIdx > 0) {
+                        sb.Append("\n");
+                    }
+                    //Debug.Log(texts[textIdx]);
+                    sb.Append(nxt);
+                    chatBox.text = sb.ToString();
+                    yield return new WaitForSeconds(1f);
                 }
-                //Debug.Log(texts[textIdx]);
-                sb.Append(nxt);
-                chatBox.text = sb.ToString();
-                yield return new WaitForSeconds(1f);
             }
         }
     }

@@ -28,6 +28,7 @@ public class EnemyHpBarControllerSingle : MonoBehaviour {
 
     public void SetRawValue(float val) {
         slider.value = val;
+        co = StartCoroutine(Fade());
     }
 
     public IEnumerator Fade() {

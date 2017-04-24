@@ -13,13 +13,12 @@ public class TargetControl : MonoBehaviour {
         } else {
             instance = this;
         }
-
-        BgmManager.Instance.PlayBattle();
     }
 
     public float delay = 1f;
 
     private void Start() {
+        BgmManager.Instance.PlayBattle();
         StartCoroutine(Compute());
     }
 
@@ -78,8 +77,13 @@ public class TargetControl : MonoBehaviour {
     }
 
     // Update is called once per frame
+    private bool prevState = false;
     void Update() {
-        //Debug.Log(Enemies.Count);
+        //if (Enemies.Count > 0) {
+        //    BgmManager.Instance.PlayBattle();
+        //} else {
+        //    BgmManager.Instance.PlayTown();
+        //}
     }
 
     [System.NonSerialized]

@@ -506,7 +506,7 @@ MonoBehaviour:
   bloodSplatter: {fileID: 1843829896786728, guid: ae3707c0446c30a46a6415ebfd193f72,
     type: 2}
   trackTarget: 1
-  moveSpeed: 5
+  moveSpeed: 10
   proximityStop: 1.5
   attackDelay: 1
   doDeathWait: 1
@@ -671,7 +671,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f81c16b590aae4d4983b20dc957a9e3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 1000
+  maxHp: 10000
   walkSpeed: 12
 --- !u!114 &114853873121936624
 MonoBehaviour:
@@ -733,7 +733,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileForce: 10
-  damage: 10
+  damage: 200
   targetTag: Enemy
 --- !u!114 &114929862295468964
 MonoBehaviour:
