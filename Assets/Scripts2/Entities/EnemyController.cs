@@ -127,6 +127,13 @@ public class EnemyController : PoolObject, IDamageable {
         return false;
     }
 
+    private bool canAttack = true;
+    public float attackDelay = 1f;
+    private IEnumerator AttackCooldown() {
+        yield return new WaitForSeconds(attackDelay);
+        canAttack = true;
+    }
+
     private void Update() {
         //if (stopFrames-- > 0) {
         //    moverController.MoveSpeed = 0;
@@ -166,8 +173,10 @@ public class EnemyController : PoolObject, IDamageable {
                     //moverController.MoveDirection = Vector2.zero;
                     moverController.Direction = followVector;
 
-                    if (fsm.GetCurrentAnimatorStateInfo(0).fullPathHash != ATTACKING) {
+                    if (fsm.GetCurrentAnimatorStateInfo(0).fullPathHash != ATTACKING && canAttack) {
+                        canAttack = false;
                         fsm.SetTrigger("triggerAttack");
+                        StartCoroutine(AttackCooldown());
                     }
                 } else {
                     moverController.Direction = followVector;

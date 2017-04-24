@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour, IDamageable {
     private FsmFrameInfo state;
     private PlayerFrameInfo frameInfo;
 
+    public Animator cooldown;
+
     private void Awake() {
         fsm = GetComponent<Animator>();
         player = GetComponent<Player>();
@@ -44,6 +46,12 @@ public class PlayerController : MonoBehaviour, IDamageable {
         player.DoUpdate(state, c, ref frameInfo);
         playerAnimator.DoUpdate(player, ref frameInfo);
         playerAudio.DoUpdate(player, ref frameInfo);
+
+        if (state.hasChanged) {
+            if (state.curr == AnimStates.ATTACK) {
+                cooldown.SetTrigger(AnimParams.TRIGGER_COOLDOWN);
+            }
+        }
 
         if (state.curr == AnimStates.IDLE) {
             //if (c.isRollPressed && player.CanRoll) {
@@ -167,6 +175,7 @@ public class AnimParams {
     public static int TRIGGER_ATTACK = Animator.StringToHash("triggerAttack");
     public static int TRIGGER_CHARGEATTACK = Animator.StringToHash("triggerChargeAttack");
     public static int TRIGGER_ROLL = Animator.StringToHash("triggerRoll");
+    public static int TRIGGER_COOLDOWN = Animator.StringToHash("triggerCooldown");
 
     public static int FACEDIRX = Animator.StringToHash("faceDirX");
     public static int FACEDIRY = Animator.StringToHash("faceDirY");
