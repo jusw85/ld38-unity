@@ -165,7 +165,7 @@ public class Chatbox : MonoBehaviour {
                     //Debug.Log(texts[textIdx]);
                     sb.Append(nxt);
                     chatBox.text = sb.ToString();
-                    yield return new WaitForSeconds(1f);
+                    yield return new WaitForSeconds(1.5f);
                 }
             }
         }
