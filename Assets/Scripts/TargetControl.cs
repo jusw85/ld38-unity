@@ -14,6 +14,7 @@ public class TargetControl : MonoBehaviour {
             instance = this;
         }
 
+        BgmManager.Instance.PlayBattle();
     }
 
     public float delay = 1f;

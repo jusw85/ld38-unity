@@ -38,7 +38,8 @@ public class GameManager : MonoBehaviour {
     }
 
     private void Start() {
-        audioManager.PlayBgm(bgm);
+        if (bgm != null)
+            audioManager.PlayBgm(bgm);
         CreateUI();
     }
 

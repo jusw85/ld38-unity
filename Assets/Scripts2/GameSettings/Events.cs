@@ -4,6 +4,7 @@ public class Events {
     public static readonly int PLAYER_HPCHANGE = EventManager.StringToHash("player_hpchange");
     public static readonly int GAME_OVER = EventManager.StringToHash("game_over");
     public static readonly int PLAY_SFX = EventManager.StringToHash("play_sfx");
+    public static readonly int PLAY_BGM = EventManager.StringToHash("play_bgm");
 }
 
 public class PlaySfxEvent : IGameEvent {

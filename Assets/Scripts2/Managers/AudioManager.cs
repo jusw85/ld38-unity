@@ -40,12 +40,20 @@ public class AudioManager : MonoBehaviour {
         PlaySfx(ev.clip);
     }
 
+
+    private void PlayBgmEvent(IGameEvent e) {
+        PlaySfxEvent ev = (PlaySfxEvent)e;
+        PlayBgm(ev.clip);
+    }
+
     private void OnEnable() {
         eventManager.AddSubscriber(Events.PLAY_SFX, PlaySfxEvent);
+        eventManager.AddSubscriber(Events.PLAY_BGM, PlayBgmEvent);
     }
 
     private void OnDisable() {
         eventManager.RemoveSubscriber(Events.PLAY_SFX, PlaySfxEvent);
+        eventManager.RemoveSubscriber(Events.PLAY_BGM, PlayBgmEvent);
     }
 
     private void Update() {
