@@ -24,10 +24,10 @@ public class SwordController : MonoBehaviour {
                 damageInfo.damage = damage;
                 damageable.Damage(damageInfo);
             }
-            if (gameObject.tag.Equals("Player")) {
-                Enemy ec = other.transform.parent.GetComponent<Enemy>();
-                EnemyHpBarController.Instance.SetValue(ec.currentHp - damage, ec.maxHp);
-            }
+            //if (gameObject.tag.Equals("Player")) {
+            //    Enemy ec = other.transform.parent.GetComponent<Enemy>();
+            //    EnemyHpBarController.Instance.SetValue(ec.currentHp - damage, ec.maxHp);
+            //}
         }
 
 

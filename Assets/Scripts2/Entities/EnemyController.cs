@@ -32,12 +32,15 @@ public class EnemyController : PoolObject, IDamageable {
 
     private EnemyFrameInfo frameInfo;
     private SpriteRenderer spriteRenderer;
+
+    private EnemyHpBarControllerSingle hpbar;
     private void Awake() {
         moverController = GetComponent<MoverController>();
 
         hitbox = transform.Find("Hitbox").GetComponent<BoxCollider2D>();
         movement = transform.Find("Movement").GetComponent<BoxCollider2D>();
         floatingText = transform.Find("FloatingText").gameObject;
+        hpbar = transform.Find("Canvas/HpBar").GetComponent<EnemyHpBarControllerSingle>();
         rb2d = GetComponent<Rigidbody2D>();
 
         poolManager = Toolbox.GetOrAddComponent<PoolManager>();
@@ -146,12 +149,13 @@ public class EnemyController : PoolObject, IDamageable {
             movement.gameObject.SetActive(false);
             hitbox.gameObject.SetActive(false);
             floatingText.SetActive(false);
+            hpbar.gameObject.SetActive(false);
             rb2d.isKinematic = true;
             StartCoroutine(DeathWait());
             return;
         }
 
-        if (trackTarget && stopFrames-- <= 0) {
+        if (trackTarget && Mathf.Clamp(stopFrames--, 0, stopFrames) <= 0) {
             if (isFollowTargetActive()) {
                 moverController.Speed = moveSpeed;
                 moverController.Direction = Vector2.zero;
@@ -227,9 +231,21 @@ public class EnemyController : PoolObject, IDamageable {
         frameInfo.damageInfo = damageInfo;
 
         stopFrames = 16; // should use time-based instead
+
+        hpbar.SetValue(enemy.currentHp - damageInfo.damage, enemy.maxHp);
     }
 
     public override void OnObjectReuse() {
+        isDying = false;
+        movement.gameObject.SetActive(true);
+        hitbox.gameObject.SetActive(true);
+        floatingText.SetActive(true);
+        hpbar.gameObject.SetActive(true);
+        rb2d.isKinematic = false;
+        spriteRenderer.flipX = false;
+        spriteRenderer.color = Color.white;
+        faceDir = FACE_DOWN;
+
         if (tag.Equals("Enemy")) {
             TargetControl.Instance.Enemies.Add(this);
             EnemyController o = TargetControl.Instance.ClosestAlly(this);
@@ -245,6 +261,7 @@ public class EnemyController : PoolObject, IDamageable {
                 followTarget = o.gameObject;
             }
         }
+
         if (followTarget != null) {
             followTargetController = followTarget.GetComponent<EnemyController>();
         }
