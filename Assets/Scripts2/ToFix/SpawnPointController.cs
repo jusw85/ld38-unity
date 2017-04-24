@@ -45,7 +45,8 @@ public class SpawnPointController : MonoBehaviour {
 
     private IEnumerator SpawnCoroutine() {
         isRunning = true;
-        while (runForever || (spawnInstances - numPerSpawn) > 0) {
+        while (runForever || (spawnInstances - numPerSpawn) >= 0) {
+            spawnInstances -= numPerSpawn;
             for (int i = 0; i < numPerSpawn; i++) {
                 Spawn();
             }

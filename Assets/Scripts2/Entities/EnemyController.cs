@@ -254,6 +254,7 @@ public class EnemyController : PoolObject, IDamageable {
         spriteRenderer.flipX = false;
         spriteRenderer.color = Color.white;
         faceDir = FACE_DOWN;
+        hpbar.SetRawValue(1f);
 
         if (tag.Equals("Enemy")) {
             TargetControl.Instance.Enemies.Add(this);

@@ -6,7 +6,7 @@ public class EnemyHpBarControllerSingle : MonoBehaviour {
 
     private Slider slider;
     private EventManager eventManager;
-    
+
     private GameObject bg;
     private Coroutine co;
     private void Awake() {
@@ -24,6 +24,10 @@ public class EnemyHpBarControllerSingle : MonoBehaviour {
         bg.SetActive(true);
         slider.value = Mathf.Clamp((current / max), 0, 1);
         co = StartCoroutine(Fade());
+    }
+
+    public void SetRawValue(float val) {
+        slider.value = val;
     }
 
     public IEnumerator Fade() {
