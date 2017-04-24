@@ -39,9 +39,64 @@ public class CreateAnimations : EditorWindow {
         //CreatePaladinWalk();
         //CreatePaladinAttack();
 
-        CreateDeathKnightIdle();
-        CreateDeathKnightWalk();
-        CreateDeathKnightAttack();
+        //CreateDeathKnightIdle();
+        //CreateDeathKnightWalk();
+        //CreateDeathKnightAttack();
+
+        CreateBunnyIdle();
+        CreateBunnyWalk();
+        CreateBunnyAttack();
+    }
+
+    public static void CreateBunnyIdle() {
+        string baseClipPath = "Assets/Animations/Bunny/BunnyIdle";
+        int frameRate = 1;
+        string spritePath = "Assets/Sprites/BG1_192x192.png";
+        string controllerPath = "Assets/Animations/Bunny/Bunny.controller";
+        string stateName = "Idle";
+        int[] idx = { 17, 17, 18, 18, 19, 19, 16, 16 };
+        int[] subBlendTreeIdx = { 0 };
+
+        NamedAnimationClip[] clips = Create4Dir(baseClipPath, frameRate, spritePath, idx, controllerPath, stateName, doFlip: false);
+        for (int i = 0; i < clips.Length; i++) {
+            CreateAnimationsUtility.SaveAnimationClip(clips[i].clip, clips[i].clipPath);
+            subBlendTreeIdx[subBlendTreeIdx.Length - 1] = i;
+            CreateAnimationsUtility.SetClipToAnimatorControllerBlendTree(clips[i].clip, controllerPath, 0, stateName, subBlendTreeIdx);
+        }
+    }
+
+    public static void CreateBunnyWalk() {
+        string baseClipPath = "Assets/Animations/Bunny/BunnyWalk";
+        int frameRate = 12;
+        string spritePath = "Assets/Sprites/BG1_192x192.png";
+        string controllerPath = "Assets/Animations/Bunny/Bunny.controller";
+        string stateName = "Walk";
+        int[] idx = { 4, 7, 8, 11, 12, 15, 0, 3 };
+        int[] subBlendTreeIdx = { 0 };
+
+        NamedAnimationClip[] clips = Create4Dir(baseClipPath, frameRate, spritePath, idx, controllerPath, stateName, doFlip: false);
+        for (int i = 0; i < clips.Length; i++) {
+            CreateAnimationsUtility.SaveAnimationClip(clips[i].clip, clips[i].clipPath);
+            subBlendTreeIdx[subBlendTreeIdx.Length - 1] = i;
+            CreateAnimationsUtility.SetClipToAnimatorControllerBlendTree(clips[i].clip, controllerPath, 0, stateName, subBlendTreeIdx);
+        }
+    }
+
+    public static void CreateBunnyAttack() {
+        string baseClipPath = "Assets/Animations/Bunny/Bunny";
+        int frameRate = 12;
+        string spritePath = "Assets/Sprites/BG1_192x192.png";
+        string controllerPath = "Assets/Animations/Bunny/Bunny.controller";
+        string stateName = "Attack";
+        int[] idx = { 17, 17, 18, 18, 19, 19, 16, 16 };
+        int[] subBlendTreeIdx = { 0 };
+
+        NamedAnimationClip[] clips = Create4Dir(baseClipPath, frameRate, spritePath, idx, controllerPath, stateName, doFlip: false);
+        for (int i = 0; i < clips.Length; i++) {
+            CreateAnimationsUtility.SaveAnimationClip(clips[i].clip, clips[i].clipPath);
+            subBlendTreeIdx[subBlendTreeIdx.Length - 1] = i;
+            CreateAnimationsUtility.SetClipToAnimatorControllerBlendTree(clips[i].clip, controllerPath, 0, stateName, subBlendTreeIdx);
+        }
     }
 
     public static void CreateDeathKnightIdle() {

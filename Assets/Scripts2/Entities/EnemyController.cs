@@ -134,6 +134,8 @@ public class EnemyController : PoolObject, IDamageable {
         canAttack = true;
     }
 
+    public bool doDeathWait = true;
+
     private void Update() {
         //if (stopFrames-- > 0) {
         //    moverController.MoveSpeed = 0;
@@ -158,7 +160,9 @@ public class EnemyController : PoolObject, IDamageable {
             floatingText.SetActive(false);
             hpbar.gameObject.SetActive(false);
             rb2d.isKinematic = true;
-            StartCoroutine(DeathWait());
+            if (doDeathWait) {
+                StartCoroutine(DeathWait());
+            }
             return;
         }
 

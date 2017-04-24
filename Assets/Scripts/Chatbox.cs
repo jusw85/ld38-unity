@@ -17,6 +17,9 @@ public class Chatbox : MonoBehaviour {
     public Text replyBox;
     public ControlManager cm;
 
+    public EnemyController bunnyController;
+    public Enemy bunny;
+
     public void Awake() {
         //chatBox = GetComponentInChildren<Text>();
         chatBox.text = "";
@@ -28,6 +31,7 @@ public class Chatbox : MonoBehaviour {
     }
 
     public void Start() {
+        StartCoroutine(Start1());
         StartCoroutine(ChatSpam());
     }
 
@@ -39,7 +43,7 @@ public class Chatbox : MonoBehaviour {
                 toCheckChatHeight = false;
             }
         }
-        if (pauseText && cm.isAttackPressed) {
+        if (inputPause && cm.isAttackPressed) {
             if (textIdx > 0) {
                 sb.Append("\n");
             }
@@ -50,14 +54,22 @@ public class Chatbox : MonoBehaviour {
         }
     }
 
+    public IEnumerator Start1() {
+        while (bunny.currentHp > 0) {
+            yield return new WaitForSeconds(1f);
+        }
+        yield return new WaitForSeconds(1f);
+        fullPause = false;
+    }
+
     public IEnumerator DelayPause() {
         yield return new WaitForSeconds(0.5f);
-        pauseText = false;
+        inputPause = false;
     }
 
     private bool toCheckChatHeight = false;
     [System.NonSerialized]
-    public bool pauseText = false;
+    public bool inputPause = false;
     public bool fullPause = true;
 
     private IEnumerator ChatSpam() {
@@ -65,14 +77,14 @@ public class Chatbox : MonoBehaviour {
             while (fullPause) {
                 yield return new WaitForSeconds(1f);
             }
-            while (pauseText) {
+            while (inputPause) {
                 yield return new WaitForSeconds(1f);
             }
             string nxt = texts[textIdx++];
             if (nxt.StartsWith("--")) {
                 nxt = nxt.Remove(0, 3);
                 replyBox.text = nxt;
-                pauseText = true;
+                inputPause = true;
                 yield return new WaitForSeconds(1f);
             } else {
                 if (CheckTextHeight()) {
