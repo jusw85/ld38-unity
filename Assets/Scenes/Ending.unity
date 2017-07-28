@@ -864,6 +864,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: c7ba26f841f8aff469cca0639646dacc, type: 3}
   - {fileID: 21300000, guid: f769c72c8577e0b4bbb45a7bd900e698, type: 3}
   - {fileID: 21300000, guid: 070b83eca6aeab944a204979c26aaceb, type: 3}
+  - {fileID: 21300000, guid: 782e76073c6c4e243b36ecb9eb69e37b, type: 3}
   endingTexts:
   - {fileID: 230087060}
   - {fileID: 257321989}

@@ -131,6 +131,7 @@ public class EndingManager : MonoBehaviour {
         }
         if (idx == 5) {
             endingTexts[6].enabled = false;
+            endingTexts[7].enabled = false;
         }
         if (idx <= endings.Length - 1) {
             spriteRenderer.sprite = endings[idx];
